@@ -5,8 +5,8 @@ import { Users, ShoppingCart, Star, CheckCircle } from "lucide-react"
 
 export function InteractiveStats() {
   const [stats, setStats] = useState([
-    { label: "Happy Customers", value: "50,000+", icon: Users },
-    { label: "Products Sold", value: "100,000+", icon: ShoppingCart },
+    { label: "Happy Customers", value: "10,0000+", icon: Users },
+    { label: "Products Sold", value: "10,0000+", icon: ShoppingCart },
     { label: "Average Rating", value: "4.9/5", icon: Star },
     { label: "Orders Delivered", value: "75,000+", icon: CheckCircle },
   ])
