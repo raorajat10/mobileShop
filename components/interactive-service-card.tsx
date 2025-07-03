@@ -1,25 +1,15 @@
-// components/InteractiveServiceCard.tsx (Updated)
 "use client"
-
-import type React from "react"
 
 import { useState, useCallback } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle } from "lucide-react"
-
-interface Service {
-  icon: React.JSX.Element
-  title: string
-  description: string
-  color: string
-  features?: string[]
-}
+import type { Service } from "@/lib/types"
 
 interface InteractiveServiceCardProps {
   service: Service
   index: number
-  onLearnMore: (service: Service) => void // Add this prop
+  onLearnMore: (service: Service) => void
 }
 
 export function InteractiveServiceCard({ service, index, onLearnMore }: InteractiveServiceCardProps) {
@@ -32,8 +22,8 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
 
   const handleLearnMore = useCallback(
     (e: React.MouseEvent) => {
-      e.stopPropagation() // Prevent the card's onClick from firing
-      onLearnMore(service) // Call the passed function with the service data
+      e.stopPropagation()
+      onLearnMore(service)
     },
     [service, onLearnMore],
   )
@@ -43,14 +33,9 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
       className={`text-center glass-card glass-card-hover group transition-all duration-500 cursor-pointer ${
         isExpanded ? "scale-105 shadow-2xl" : ""
       }`}
-      style={{
-        animationDelay: `${index * 0.1}s`,
-      }}
+      style={{ animationDelay: `${index * 0.1}s` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      // Removed onClick from Card to avoid conflict with button's click, or manage state carefully.
-      // If you want the whole card to open the drawer on click, remove the button's onClick and handle it here:
-      // onClick={() => onLearnMore(service)}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
@@ -69,11 +54,15 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
         >
           {service.icon}
         </div>
-        <CardTitle className="text-gray-800 group-hover:text-primary transition-colors">{service.title}</CardTitle>
+        <CardTitle className="text-gray-800 group-hover:text-primary transition-colors">
+          {service.title}
+        </CardTitle>
       </CardHeader>
 
       <CardContent>
-        <CardDescription className="text-center text-gray-600 mb-4">{service.description}</CardDescription>
+        <CardDescription className="text-center text-gray-600 mb-4">
+          {service.description}
+        </CardDescription>
 
         {isExpanded && service.features && (
           <div className="space-y-2 mb-4 animate-fadeIn">
@@ -89,7 +78,7 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
         <Button
           variant="outline"
           className="glass-card glass-card-hover group-hover:bg-primary group-hover:text-white transition-all duration-300"
-          onClick={handleLearnMore} // This will now open the drawer
+          onClick={handleLearnMore}
         >
           Learn More
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

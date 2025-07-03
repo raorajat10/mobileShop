@@ -118,7 +118,7 @@ export function InteractiveNavigation() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky  top-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "glass-header backdrop-blur-xl border-b" : "bg-transparent"
       }`}
     >

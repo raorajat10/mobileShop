@@ -48,7 +48,7 @@ export function ProductCategoryCarousel() {
   }, [instanceRef])
 
   return (
-    <section className="py-16 bg-gradient-to-br">
+    <section className="py-20 fade-in-section bg-gradient-to-br">
       <h2 className="text-3xl text-center font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-gray-800">
         Explore Our Collections
       </h2>

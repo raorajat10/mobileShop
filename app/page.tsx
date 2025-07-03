@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ProductCategoryCarousel } from "@/components/ProductCategoryCarousel";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import CompanySupportersDropdown from "../components/CompanySupportersDropdown";
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
-
+import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
 import {
   Mail,
   MapPin,
@@ -39,12 +40,18 @@ import { useEffect, useState, useCallback } from "react";
 import { ServiceDetailDrawer } from "@/components/ServiceDetailDrawer";
 import AboutCarousel from "@/components/AboutCarousel";
 import ProductCarousel from "@/components/ProductCarousel";
-
+import FounderSection from "@/components/FounderSection";
+import InstagramEmbed from "@/components/InstagramEmbed";
+import Footer from "@/components/footerdetailes";
+import { useMemo } from "react";
+import WhyTestinomials from "@/components/whyTestinomials";
+// import TestimonialsSlider from "@/components/Testimonials";
 export default function MobileShowroomPortfolio() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isServiceDrawerOpen, setIsServiceDrawerOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<any | null>(null); // State to hold selected service data
+  useFadeInOnScroll();
 
   const handleScroll = useCallback(() => {
     setScrollY(window.scrollY);
@@ -58,57 +65,6 @@ export default function MobileShowroomPortfolio() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
-
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "iPhone 15 Pro Max",
-      brand: "Apple",
-      price: "₹1199",
-      originalPrice: "₹1299",
-      image: "/placeholder.svg?height=300&width=250",
-      features: ["A17 Pro Chip", "Titanium Design", "48MP Camera"],
-      badge: "Latest",
-      rating: 4.9,
-      reviews: 1250,
-    },
-    {
-      id: 2,
-      name: "Galaxy S24 Ultra",
-      brand: "Samsung",
-      price: "₹1199",
-      originalPrice: "₹1399",
-      image: "/placeholder.svg?height=300&width=250",
-      features: ["S Pen Included", "200MP Camera", "AI Features"],
-      badge: "Popular",
-      rating: 4.8,
-      reviews: 980,
-    },
-    {
-      id: 3,
-      name: "Pixel 8 Pro",
-      brand: "Google",
-      price: "₹899",
-      originalPrice: "₹999",
-      image: "/placeholder.svg?height=300&width=250",
-      features: ["Magic Eraser", "Pure Android", "AI Photography"],
-      badge: "Best Value",
-      rating: 4.7,
-      reviews: 756,
-    },
-    {
-      id: 4,
-      name: "OnePlus 12",
-      brand: "OnePlus",
-      price: "₹699",
-      originalPrice: "₹799",
-      image: "/placeholder.svg?height=300&width=250",
-      features: ["Fast Charging", "Flagship Specs", "OxygenOS"],
-      badge: "Fast Charging",
-      rating: 4.6,
-      reviews: 432,
-    },
-  ];
 
   const services = [
     {
@@ -147,7 +103,7 @@ export default function MobileShowroomPortfolio() {
         "Same day delivery",
         "Secure packaging",
         "Real-time tracking",
-        "Contactless delivery",
+        "Contact delivery",
       ],
     },
     {
@@ -208,6 +164,43 @@ export default function MobileShowroomPortfolio() {
     setSelectedService(null);
   }, []);
 
+  const toggleSupportInfo = (supportType: string) => {
+    let url = "/";
+    switch (supportType) {
+      case "contact us":
+        url = "/support/contact";
+        break;
+      case "faq":
+        url = "/support/faq";
+        break;
+      case "warranty":
+        url = "/support/warranty";
+        break;
+      case "returns":
+        url = "/support/returns";
+        break;
+      default:
+        url = "/";
+    }
+    window.open(url, "_blank");
+  };
+  const experienceYears = useMemo(() => {
+    const foundationDate = new Date(2008, 6, 13); // July is month 6 (0-indexed)
+    const now = new Date();
+    let years = now.getFullYear() - foundationDate.getFullYear();
+
+    // Check if today is after 15 July this year
+    const currentYearAnniversary = new Date(now.getFullYear(), 6, 15);
+    if (now >= currentYearAnniversary) {
+      years += 1;
+    }
+
+    return years;
+  }, []);
+  // Foundation date: 15 July 2009
+  // If you need experienceYears, you can use useMemo here as in the AboutYashMobiles function
+  // const experienceYears = useMemo(() => { ... }, []);
+
   return (
     <div className="min-h-screen relative overflow-x-hidden">
       <InteractiveBackground />
@@ -216,7 +209,7 @@ export default function MobileShowroomPortfolio() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative mt-4 pt-2 pb-20 lg:mt-8 lg:pt-4 lg:pb-32 overflow-hidden"
+        className="relative mt-4 pt-2 pb-20 lg:mt-8 lg:pt-4 lg:pb-32 fade-in-section overflow-hidden"
       >
         <div
           className="mx-auto px-6 lg:px-12 max-w-7xl"
@@ -255,21 +248,29 @@ export default function MobileShowroomPortfolio() {
               <InteractiveStats />
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button
+                {/* <Button id="products"
                   size="lg"
-                  className="h-12 glass-card glass-card-hover group"
+                  className="h-12  glass-card glass-card-hover group"
                 >
-                  <Smartphone className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                  <Smartphone  className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                   Browse Products
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-12 glass-card glass-card-hover group"
+                </Button> */}
+
+                <a
+                  href="https://www.google.com/maps/place/Yash+Mobiles+Jaipur" // replace with your actual store location link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
                 >
-                  <MapPin className="w-4 h-4 mr-2 group-hover:bounce transition-transform" />
-                  Visit Store
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="h-12 w-full glass-card glass-card-hover group"
+                  >
+                    <MapPin className="w-4 h-4 mr-2 group-hover:animate-bounce transition-transform" />
+                    Visit Store
+                  </Button>
+                </a>
               </div>
 
               <div className="flex items-center space-x-4 pt-4">
@@ -321,7 +322,7 @@ export default function MobileShowroomPortfolio() {
 
       {/*we deal with */}
 
-      <section id="brands" className="py-8 mb-10">
+      <section id="brands" className="py-8 fade-in-section mb-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-800">
             Brands We Deal With
@@ -354,11 +355,11 @@ export default function MobileShowroomPortfolio() {
             ))}
           </div>
         </div>
-        <ProductCategoryCarousel />
+        {/* <ProductCategoryCarousel /> */}
       </section>
 
       {/* Featured Products */}
-      <section id="products" className="py-10 relative">
+      <section id="products" className="py-10 fade-in-section relative">
         <div className="mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="text-center mb-12">
             <Badge
@@ -378,14 +379,14 @@ export default function MobileShowroomPortfolio() {
             </p>
           </div>
 
-           <div className="max-w-7xl mx-auto px-4">
-        <ProductCarousel />
-      </div>
+          <div className="max-w-7xl mx-auto px-4">
+            <ProductCarousel />
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="py-20 relative">
+      <section id="services" className="py-20 fade-in-section relative">
         <div className="mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="text-center mb-12">
             <Badge
@@ -418,7 +419,7 @@ export default function MobileShowroomPortfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative">
+      <section id="about" className="py-20 fade-in-section relative">
         <div className="mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
@@ -434,11 +435,11 @@ export default function MobileShowroomPortfolio() {
                   About YashMobiles
                 </h2>
                 <p className="max-w-[600px] text-gray-700 md:text-lg font-medium">
-                  With over 16 years of experience in the mobile industry,
-                  YashMobile has become the trusted destination for smartphone
-                  enthusiasts and everyday users alike. We pride ourselMves on
-                  offering authentic products, competitive prices, and
-                  exceptional customer service.
+                  With over {experienceYears} years of experience in the mobile
+                  industry, YashMobile has become the trusted destination for
+                  smartphone enthusiasts and everyday users alike. We pride
+                  ourselMves on offering authentic products, competitive prices,
+                  and exceptional customer service.
                 </p>
               </div>
 
@@ -474,35 +475,54 @@ export default function MobileShowroomPortfolio() {
                 />
               </div>
             </div> */}
-            <div className="relative rounded-lg object-cover glass-card group-hover:scale-105 transition-transform duration-300">
+            <div className="rounded-lg glass-card overflow-hidden">
               <AboutCarousel />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Other content */}
-
-      {/* Customer Reviews Marquee */}
-      <section className="mx-auto px-6 lg:px-12 max-w-7xl my-12">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
-          Customer Reviews
-        </h2>
-        <ReviewsMarquee />
+      {/* Founder Section */}
+      <section className="fade-in-section ">
+        <FounderSection />
       </section>
 
+       {/* Company Zone Managers */}
+      <CompanySupportersDropdown />
+
+      {/* Other content */}
+      {/* Testimonials Section */}
+      {/* <TestimonialsSlider /> */}
+      <section>
+        <WhyTestinomials />
+      </section>
+      {/* Customer Reviews Marquee */}
+      <section className="mx-auto py-16 relative fade-in-section px-6 lg:px-12 max-w-7xl">
+       <div className="text-center"> <Badge variant="secondary" className="mb-4  glass-card animate-shimmer">
+            
+          </Badge>
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
+          Customer Reviews
+        </h2></div>
+        <ReviewsMarquee />
+      </section>
+      {/* Instagram Embed Section */}
+      <section>
+        <InstagramEmbed />
+      </section>
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative">
-        <div className="mx-auto px-6 lg:px-12 max-w-7xl">
-          <div className="text-center mb-12">
+      <section id="contact" className="py-16 fade-in-section md:py-20 relative">
+        <div className="mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl">
+          {/* Heading */}
+          <div className="text-center mb-10 md:mb-12">
             <Badge
               variant="secondary"
-              className="mb-4 glass-card animate-shimmer"
+              className="mb-4 glass-card animate-shimmer w-fit mx-auto"
             >
               <MapPin className="w-3 h-3 mr-1" />
               Visit Us Today
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-800">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-800 mb-4">
               Visit Our Showroom
             </h2>
             <p className="text-gray-700 md:text-lg max-w-2xl mx-auto font-medium">
@@ -511,7 +531,9 @@ export default function MobileShowroomPortfolio() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          {/* Cards Grid */}
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
+            {/* Contact Information Card */}
             <Card className="glass-card glass-card-hover">
               <CardHeader>
                 <CardTitle className="flex items-center text-gray-800">
@@ -538,7 +560,7 @@ export default function MobileShowroomPortfolio() {
                   {
                     icon: <Mail className="w-5 h-5 text-primary" />,
                     title: "Email",
-                    content: "info@mobilehub.com",
+                    content: "yashmobilebkb@gmail.com",
                   },
                   {
                     icon: <Clock className="w-5 h-5 text-primary" />,
@@ -558,13 +580,14 @@ export default function MobileShowroomPortfolio() {
                       <p className="font-medium text-gray-800 group-hover:text-primary transition-colors">
                         {item.title}
                       </p>
-                      <p className="text-sm text-gray-800">{item.content}</p>
+                      <p className="text-sm text-gray-700">{item.content}</p>
                     </div>
                   </div>
                 ))}
               </CardContent>
             </Card>
 
+            {/* Map Card */}
             <Card className="glass-card glass-card-hover">
               <CardHeader>
                 <CardTitle className="flex items-center text-gray-800">
@@ -576,22 +599,16 @@ export default function MobileShowroomPortfolio() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <a
-                  href="https://www.google.com/maps/place/BadKeBalaji,+Ajmer+Road,+Jaipur,+Rajasthan+302026"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block aspect-video rounded-lg overflow-hidden relative group"
-                >
+                <div className="block rounded-lg overflow-hidden relative aspect-video">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.7041301797167!2d75.63330217461935!3d26.849361276684885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4a3173d057f7%3A0x790838ce0e135887!2sYASH%20MOBILE%20NEW!5e0!3m2!1sen!2sin!4v1750984178405!5m2!1sen!2sin"
-                    width="600"
-                    height="450"
-                    style={{ border: 0 }}
-                    allowFullScreen
+                    title="YashMobiles Location"
                     loading="lazy"
+                    allowFullScreen
+                    className="w-full h-full border-0"
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
-                </a>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -599,7 +616,7 @@ export default function MobileShowroomPortfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t glass-header">
+      {/* <footer className="border-t glass-header">
         <div className="container px-4 md:px-6 py-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-3">
@@ -647,6 +664,15 @@ export default function MobileShowroomPortfolio() {
                     <li
                       key={itemIndex}
                       className="hover:text-primary transition-colors cursor-pointer hover:translate-x-1 transform duration-200 text-gray-900"
+                      onClick={() => {
+                        if (section.title === "Support") {
+                          toggleSupportInfo(item.toLowerCase());
+                        } else {
+                          smoothScrollTo(
+                            `#${item.toLowerCase().replace(/\s+/g, "-")}`
+                          );
+                        }
+                      }}
                     >
                       {item}
                     </li>
@@ -698,7 +724,8 @@ export default function MobileShowroomPortfolio() {
             <Linkedin className="w-5 h-5" />
           </a>
         </div>
-      </footer>
+      </footer> */}
+      <Footer />
       <ServiceDetailDrawer
         service={selectedService}
         isOpen={isServiceDrawerOpen}

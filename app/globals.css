@@ -43,6 +43,18 @@
   }
 }
 
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 @import "keen-slider/keen-slider.min.css";
 
 /* marquee animations */
