@@ -149,7 +149,7 @@ export function InteractiveProductCard({
                 {Array.from({ length: 5 }, (_, i) => (
                   <Star
                     key={i}
-                    className={`w-3 h-3 ${
+                    className={`w-3 h-3  ${
                       i < Math.round(product.rating)
                         ? "fill-yellow-400 text-yellow-400"
                         : "text-gray-300"

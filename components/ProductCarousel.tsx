@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { InteractiveProductCard } from "./interactive-product-card";
 import type { Product } from "./interactive-product-card";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
 
 // Sample products (add real images in /public/products/)
 const products: Product[] = [
@@ -85,6 +86,8 @@ const products: Product[] = [
 
 export default function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
@@ -92,6 +95,25 @@ export default function ProductCarousel() {
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % products.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const delta = touchStartX.current - touchEndX.current;
+    if (delta > 50) {
+      // Swiped left
+      handleNext();
+    } else if (delta < -50) {
+      // Swiped right
+      handlePrev();
+    }
   };
 
   const getVisibleIndexes = () => {
@@ -104,7 +126,12 @@ export default function ProductCarousel() {
   const visibleIndexes = getVisibleIndexes();
 
   return (
-    <div className="w-full flex flex-col items-center gap-4 py-6 relative">
+    <div
+      className="w-full flex flex-col items-center gap-4 py-6 relative"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="flex items-center justify-center gap-4">
         <Button
           variant="ghost"
@@ -112,7 +139,9 @@ export default function ProductCarousel() {
           onClick={handlePrev}
           aria-label="Previous"
         >
-          <ChevronLeft className="w-6 h-6" />
+           <div className="rounded-full  p-4 bg-blue-400 hover:bg-blue-600 shadow-md">
+            <ChevronLeft className="text-gray-900" />
+          </div>
         </Button>
 
         <div className="flex items-center justify-center gap-4 max-w-full">
@@ -125,7 +154,7 @@ export default function ProductCarousel() {
                 scale: position === 1 ? 1 : 0.85,
               }}
               transition={{ type: "spring", stiffness: 200, damping: 25 }}
-              className={`w-[280px] sm:w-[300px] md:w-[320px]`}
+              className="w-[280px] sm:w-[300px] md:w-[320px]"
             >
               <InteractiveProductCard product={products[index]} index={index} />
             </motion.div>
@@ -134,13 +163,16 @@ export default function ProductCarousel() {
 
         <Button
           variant="ghost"
+          className="w-16 h-16"
           size="icon"
           onClick={handleNext}
           aria-label="Next"
         >
-          <ChevronRight className="w-6 h-6" />
+          <div className="rounded-full  p-4 bg-blue-400 shadow-md hover:bg-blue-600 transition-colors">
+            <ChevronRight className="text-gray-800 " />
+          </div>
         </Button>
       </div>
     </div>
   );
-}
+} 
