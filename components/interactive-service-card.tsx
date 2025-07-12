@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle, Sparkles } from "lucide-react"
 import type { Service } from "@/lib/types"
 
 interface InteractiveServiceCardProps {
@@ -30,7 +30,7 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
 
   return (
     <Card
-      className={`text-center glass-card glass-card-hover group transition-all duration-500 cursor-pointer ${
+      className={`text-center border-violet-400 bg-violet-300 glass-card-hover group transition-all duration-500 cursor-pointer ${
         isExpanded ? "scale-105 shadow-2xl" : ""
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
@@ -60,7 +60,7 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
       </CardHeader>
 
       <CardContent>
-        <CardDescription className="text-center text-gray-600 mb-4">
+        <CardDescription className="text-center group-hover:text-primary text-slate-600 mb-4">
           {service.description}
         </CardDescription>
 
@@ -75,14 +75,14 @@ export function InteractiveServiceCard({ service, index, onLearnMore }: Interact
           </div>
         )}
 
-        <Button
-          variant="outline"
-          className="glass-card glass-card-hover group-hover:bg-primary group-hover:text-white transition-all duration-300"
-          onClick={handleLearnMore}
-        >
-          Learn More
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
+       <Button
+                    variant="outline"
+                    className="border-slate-300 text-slate-700 hover:bg-slate-50 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:text-white group-hover:border-0 transition-all duration-300 bg-transparent"
+                    onClick={handleLearnMore}
+                  >
+                    Learn More
+                    <Sparkles className="w-4 h-4 ml-2 group-hover:animate-spin" />
+                  </Button>
       </CardContent>
     </Card>
   )

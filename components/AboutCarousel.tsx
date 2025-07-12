@@ -22,13 +22,13 @@ export default function AboutCarousel() {
   }, []);
 
   return (
-    <div className="w-full w-xl mx-auto overflow-hidden rounded-lg shadow-lg h-[410px] relative">
+    <div className="w-full w-xl mx-auto overflow-hidden rounded-lg shadow-lg h-[420px] relative">
       <Image
         key={index}
         src={images[index]}
         alt={`About Image ${index + 1}`}
         width={850}
-        height={550}
+        height={600}
         className={`w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
           fade ? "opacity-100" : "opacity-0"
         }`}

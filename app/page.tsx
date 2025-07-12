@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
-import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin, Crown } from "lucide-react";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
 import {
   Mail,
@@ -45,6 +45,7 @@ import InstagramEmbed from "@/components/InstagramEmbed";
 import Footer from "@/components/footerdetailes";
 import { useMemo } from "react";
 import WhyTestinomials from "@/components/whyTestinomials";
+import { PremiumSmartphoneSlider } from "@/components/premiumsmartphoneslider";
 // import TestimonialsSlider from "@/components/Testimonials";
 export default function MobileShowroomPortfolio() {
   const [scrollY, setScrollY] = useState(0);
@@ -203,7 +204,8 @@ export default function MobileShowroomPortfolio() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      <InteractiveBackground />
+      {/* <InteractiveBackground /> */}
+      
       <InteractiveNavigation />
 
       {/* Hero Section */}
@@ -211,6 +213,8 @@ export default function MobileShowroomPortfolio() {
         id="home"
         className="relative mt-4 pt-2 pb-20 lg:mt-8 lg:pt-4 lg:pb-32 fade-in-section overflow-hidden"
       >
+  
+        
         <div
           className="mx-auto px-6 lg:px-12 max-w-7xl"
           style={{
@@ -229,7 +233,7 @@ export default function MobileShowroomPortfolio() {
                 <div className="flex items-center space-x-2 mb-4">
                   <Badge
                     variant="secondary"
-                    className="glass-card animate-shimmer"
+                    className="mb-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce"
                   >
                     <Zap className="w-3 h-3 mr-1" />
                     Premium Mobile Destination
@@ -324,10 +328,10 @@ export default function MobileShowroomPortfolio() {
 
       <section id="brands" className="py-8 fade-in-section mb-10">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-800">
-            Brands We Deal With
-          </h2>
-          <p className="text-gray-600 mb-8 text-sm md:text-base">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Brands We Deal With</span>
+            </h2>
+          <p className="text-primary mb-8 text-sm md:text-base">
             We offer the latest smartphones and accessories from top global
             brands.
           </p>
@@ -359,29 +363,23 @@ export default function MobileShowroomPortfolio() {
       </section>
 
       {/* Featured Products */}
-      <section id="products" className="py-10 fade-in-section relative">
-        <div className="mx-auto px-6 lg:px-12 max-w-7xl">
-          <div className="text-center mb-12">
-            <Badge
-              variant="secondary"
-              className="mb-4 glass-card animate-shimmer"
-            >
-              <Star className="w-3 h-3 mr-1" />
-              Featured Collection
+      <section id="products" className="py-24 relative">
+        <div className="container px-6 md:px-8 max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-soft-slideIn">
+            <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce">
+              <Crown className="w-4 h-4 mr-2" />
+              Premium Collection
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-800">
-              Premium Smartphones
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Premium Smartphones</span>
             </h2>
-            <p className="text-gray-700 md:text-lg max-w-2xl mx-auto font-medium">
-              Discover our handpicked selection of the latest and greatest
-              smartphones, each offering cutting-edge technology and exceptional
-              value.
+            <p className="text-slate-600 text-xl max-w-3xl mx-auto leading-relaxed font-sans">
+              Discover our handpicked selection of the latest and greatest smartphones, each offering cutting-edge
+              technology and exceptional value.
             </p>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4">
-            <ProductCarousel />
-          </div>
+          <PremiumSmartphoneSlider />
         </div>
       </section>
 
@@ -389,17 +387,14 @@ export default function MobileShowroomPortfolio() {
       <section id="services" className="py-20 fade-in-section relative">
         <div className="mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="text-center mb-12">
-            <Badge
-              variant="secondary"
-              className="mb-4 glass-card animate-shimmer"
-            >
-              <Shield className="w-3 h-3 mr-1" />
+           <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce">
+              <Crown className="w-4 h-4 mr-2" />
               Complete Solutions
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-800">
-              Our Services
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Our Services</span>
             </h2>
-            <p className="text-gray-700 md:text-lg max-w-2xl mx-auto font-medium">
+            <p className="text-primary md:text-lg max-w-2xl mx-auto font-medium">
               From sales to support, we provide comprehensive mobile solutions
               to meet all your technology needs under one roof.
             </p>
@@ -425,16 +420,17 @@ export default function MobileShowroomPortfolio() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <Badge
-                  variant="secondary"
-                  className="mb-4 glass-card w-fit animate-shimmer"
-                >
+                   variant="secondary"
+                    className="mb-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce"
+                  >
+                
                   <Award className="w-3 h-3 mr-1" />
                   Trusted Since 2009
                 </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl  text-gray-800">
-                  About YashMobiles
-                </h2>
-                <p className="max-w-[600px] text-gray-700 md:text-lg font-medium">
+                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">About YashMobile</span>
+            </h2>
+                <p className="max-w-[600px] text-gray-700 hover:text-primary md:text-lg font-medium">
                   With over {experienceYears} years of experience in the mobile
                   industry, YashMobile has become the trusted destination for
                   smartphone enthusiasts and everyday users alike. We pride
@@ -483,11 +479,11 @@ export default function MobileShowroomPortfolio() {
       </section>
 
       {/* Founder Section */}
-      <section className="fade-in-section ">
+      <section className="fade-in-section bg-v ">
         <FounderSection />
       </section>
 
-       {/* Company Zone Managers */}
+      {/* Company Zone Managers */}
       <CompanySupportersDropdown />
 
       {/* Other content */}
@@ -498,12 +494,16 @@ export default function MobileShowroomPortfolio() {
       </section>
       {/* Customer Reviews Marquee */}
       <section className="mx-auto py-16 relative fade-in-section px-6 lg:px-12 max-w-7xl">
-       <div className="text-center"> <Badge variant="secondary" className="mb-4  glass-card animate-shimmer">
-            
-          </Badge>
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
-          Customer Reviews
-        </h2></div>
+        <div className="text-center">
+          {" "}
+          <Badge
+            variant="secondary"
+            className="mb-4  glass-card animate-shimmer"
+          ></Badge>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
+            Customer Reviews
+          </h2>
+        </div>
         <ReviewsMarquee />
       </section>
       {/* Instagram Embed Section */}

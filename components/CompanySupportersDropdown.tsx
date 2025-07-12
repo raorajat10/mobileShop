@@ -19,7 +19,7 @@ export default function CompanySupportersDropdown() {
         </h2>
 
         {/* Horizontal Brand Hover Buttons */}
-        <div className="glass-card glass-card-hover w-full max-w-4xl rounded-lg overflow-x-auto whitespace-nowrap flex flex-wrap justify-center gap-2 p-2">
+        <div className="glass-card bg-violet-300 glass-card-hover w-full max-w-4xl rounded-lg overflow-x-auto whitespace-nowrap flex flex-wrap justify-center gap-2 p-2">
           {companySupporters.map((company) => (
             <button
               key={company.id}
