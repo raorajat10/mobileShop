@@ -162,9 +162,9 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-5 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
           <p>
-            &copy; {new Date().getFullYear()} YashMobiles. All rights reserved. Made with{" "}
-            <Heart className="w-3 h-3 inline text-red-500 animate-pulse" /> for
-            mobile enthusiasts.
+            &copy; {new Date().getFullYear()} YashMobiles. All rights reserved. {/*Made with{" "}*/}
+            {/* <Heart className="w-3 h-3 inline text-red-500 animate-pulse" /> for
+            mobile enthusiasts. */}
           </p>
         </div>
       </div>

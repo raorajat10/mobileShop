@@ -22,7 +22,7 @@ export default function AboutCarousel() {
   }, []);
 
   return (
-    <div className="w-full w-xl mx-auto overflow-hidden rounded-lg shadow-lg h-[420px] relative">
+    <div className="w-full w-xl mx-auto overflow-hidden rounded-lg shadow-lg h-[435px] relative">
       <Image
         key={index}
         src={images[index]}

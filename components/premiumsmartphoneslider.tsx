@@ -11,8 +11,8 @@ interface Product {
   id: number
   name: string
   brand: string
-  price: string
-  originalPrice: string
+  // price: string
+  // originalPrice: string
   image: string
   features: string[]
   badge: string
@@ -26,8 +26,8 @@ const premiumProducts: Product[] = [
     id: 1,
     name: "iPhone 16 Pro Max",
     brand: "Apple",
-    price: "$1199",
-    originalPrice: "$1299",
+    // price: "$1199",
+    // originalPrice: "$1299",
     image: "/16promax.webp?height=400&width=300",
     features: ["A17 Pro Chip", "Titanium Design", "48MP Camera", "Action Button"],
     badge: "Latest",
@@ -39,8 +39,8 @@ const premiumProducts: Product[] = [
     id: 2,
     name: "Galaxy S25 Ultra",
     brand: "Samsung",
-    price: "$1199",
-    originalPrice: "$1399",
+    // price: "$1199",
+    // originalPrice: "$1399",
     image: "/s25ultra.jpg?height=400&width=300",
     features: ["S Pen Included", "200MP Camera", "AI Features", "Titanium Frame"],
     badge: "Popular",
@@ -52,8 +52,8 @@ const premiumProducts: Product[] = [
     id: 3,
     name: "Samsung Fold 7",
     brand: "Samsung",
-    price: "$899",
-    originalPrice: "$999",
+    // price: "$899",
+    // originalPrice: "$999",
     image: "/fold7.webp?height=400&width=300",
     features: ["Magic Eraser", "Pure Android", "AI Photography", "Titan M Security"],
     badge: "Best Value",
@@ -65,8 +65,8 @@ const premiumProducts: Product[] = [
     id: 4,
     name: "OnePlus 13 Pro",
     brand: "OnePlus",
-    price: "$699",
-    originalPrice: "$799",
+    // price: "$699",
+    // originalPrice: "$799",
     image: "/1+pro.webp?height=400&width=300",
     features: ["Fast Charging", "Flagship Specs", "OxygenOS", "Hasselblad Camera"],
     badge: "Fast Charging",
@@ -78,8 +78,8 @@ const premiumProducts: Product[] = [
     id: 5,
     name: "Moto Flip",
     brand: "Motorola",
-    price: "$899",
-    originalPrice: "$999",
+    // price: "$899",
+    // originalPrice: "$999",
     image: "/motoflp.webp?height=400&width=300",
     features: ["Leica Camera", "Snapdragon 8 Gen 3", "120W Charging", "MIUI 15"],
     badge: "Camera Pro",
@@ -91,8 +91,8 @@ const premiumProducts: Product[] = [
     id: 6,
     name: "Nothing Phone 3A Pro",
     brand: "Nothing",
-    price: "599",
-    originalPrice: "$699",
+    // price: "599",
+    // originalPrice: "$699",
     image: "/nothng3.webp?height=350&width=250",
     features: ["Glyph Interface", "Transparent Design", "Snapdragon 8+ Gen 1", "Nothing OS"],
     badge: "Unique",
@@ -229,10 +229,10 @@ export function PremiumSmartphoneSlider() {
                       </div>
 
                       {/* Price */}
-                      <div className="flex items-center space-x-2">
+                      {/* <div className="flex items-center space-x-2">
                         <span className="text-2xl font-bold font-sans text-yellow-950">{product.price}</span>
                         <span className="text-sm text-gray-400 line-through">{product.originalPrice}</span>
-                      </div>
+                      </div> */}
 
                       {/* Features */}
                       <div className="space-y-1">

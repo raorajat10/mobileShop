@@ -203,7 +203,7 @@ export default function MobileShowroomPortfolio() {
   // const experienceYears = useMemo(() => { ... }, []);
 
   return (
-    <div className="min-h-screen relative bg-gray-200 overflow-x-hidden">
+    <div className="min-h-screen relative bg-white overflow-x-hidden">
       {/* <InteractiveBackground /> */}
       
       <InteractiveNavigation />
@@ -314,14 +314,15 @@ export default function MobileShowroomPortfolio() {
                 <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-bounce cursor-pointer hover:scale-110 transition-transform">
                   New Arrivals
                 </div>
-                <div className="absolute -bottom-4 -left-4 glass-card px-3 py-2 rounded-lg group-hover:scale-110 transition-transform cursor-pointer">
-                  <div className="text-xs text-gray-600">Starting from</div>
-                  <div className="text-lg font-bold text-primary">₹299</div>
-                </div>
+             
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+       <Image src="new.gif" width={1350} height={450} className="relative rounded-lg object-cover  group-hover:scale-105 transition-transform duration-300" alt={"new"}  />
       </section>
 
       {/*we deal with */}
@@ -485,9 +486,9 @@ export default function MobileShowroomPortfolio() {
       {/* Other content */}
       {/* Testimonials Section */}
       {/* <TestimonialsSlider /> */}
-      <section>
+      {/* <section>
         <WhyTestinomials />
-      </section>
+      </section> */}
       {/* Customer Reviews Marquee */}
       <section className="mx-auto py-16 relative fade-in-section px-6 lg:px-12 max-w-7xl">
         <div className="text-center">
