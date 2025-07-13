@@ -5,6 +5,7 @@ import { companySupporters } from "@/lib/data";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Award, Badge } from "lucide-react";
 
 export default function CompanySupportersDropdown() {
   const [activeCompany, setActiveCompany] = useState<string>(companySupporters[0].id);
@@ -12,14 +13,18 @@ export default function CompanySupportersDropdown() {
   const activeData = companySupporters.find(c => c.id === activeCompany);
 
   return (
-    <section className="relative py-20 bg-background" id="company-supporters">
-      <div className="mx-auto px-6 lg:px-12 max-w-7xl flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-800 mb-6">
-          Company Executives
-        </h2>
+    <section className="relative py-20 " id="company-supporters">
+      <div className="mx-auto px-6  lg:px-12 max-w-7xl flex flex-col items-center">
+        {/* <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce ">
+              <Award className="w-4 h-4 mr-2 "/>
+              Ready For You!
+            </Badge> */}
+                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-center mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Company Executies</span>
+            </h2>
 
         {/* Horizontal Brand Hover Buttons */}
-        <div className="glass-card bg-violet-300 glass-card-hover w-full max-w-4xl rounded-lg overflow-x-auto whitespace-nowrap flex flex-wrap justify-center gap-2 p-2">
+        <div className=" bg-violet-300 glass-card-hover w-full max-w-4xl rounded-lg overflow-x-auto whitespace-nowrap flex flex-wrap justify-center gap-2 p-2">
           {companySupporters.map((company) => (
             <button
               key={company.id}
@@ -49,7 +54,7 @@ export default function CompanySupportersDropdown() {
             >
               <div
                 className={cn(
-                  "glass-card glass-card-hover p-6 rounded-lg gap-6 flex flex-wrap justify-center",
+                  "bg-violet-300 glass-card-hover p-6 rounded-lg gap-6 flex flex-wrap justify-center",
                   activeData.supporters.length === 1 ? "flex-col items-center" : "sm:flex-row"
                 )}
               >

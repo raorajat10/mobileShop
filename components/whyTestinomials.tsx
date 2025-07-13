@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
+import { Award } from "lucide-react";
 
 const testimonials = [
   {
@@ -51,12 +52,13 @@ export default function Testimonials() {
     <section id="testimonials" className="py-20 fade-in-section  relative bg-background">
       <div className="mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4 glass-card animate-shimmer">
-            Why Our Clients Love Us!
-          </Badge>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-800">
-            Message From Clients
-          </h2>
+            <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce ">
+              <Award className="w-4 h-4 mr-2 " />
+              Why Our Clients Love Us!
+            </Badge>
+                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-center mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Message From Clients</span>
+            </h2>
           <p className="text-gray-700 md:text-lg max-w-2xl mx-auto font-medium mt-4">
             Hear from managers we partner with across different brands and zones.
           </p>

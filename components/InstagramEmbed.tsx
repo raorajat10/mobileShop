@@ -21,10 +21,11 @@ export default function InstagramSection() {
   }, []);
 
   return (
-    <section id="instagram" className="container px-4 md:px-6 py-20 fade-in-section relative">
-      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
-        Follow Us on Instagram
-      </h2>
+    <section id="instagram" className=" px-4 md:px-6 py-20 fade-in-section relative">
+      <div className="mx-auto px-6 lg:px-12 max-w-7xl">
+        <h2 className="text-4xl text-center font-bold tracking-tight sm:text-5xl  md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Follow Us on Instagram</span>
+            </h2>
       <p className="text-center text-gray-600 mb-10">
         See our latest updates, offers, and happy customer stories.
       </p>
@@ -34,7 +35,7 @@ export default function InstagramSection() {
             key={idx}
             className="rounded-lg overflow-hidden glass-card shadow-md flex justify-center"
           >
-             <div className="max-h-[400px] overflow-hidden rounded-lg w-full">
+             <div className="max-h-[410px] overflow-hidden rounded-lg w-full">
     <blockquote
       className="instagram-media w-full"
       data-instgrm-permalink={link}
@@ -54,6 +55,7 @@ export default function InstagramSection() {
   </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

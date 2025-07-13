@@ -203,7 +203,7 @@ export default function MobileShowroomPortfolio() {
   // const experienceYears = useMemo(() => { ... }, []);
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div className="min-h-screen relative bg-gray-200 overflow-x-hidden">
       {/* <InteractiveBackground /> */}
       
       <InteractiveNavigation />
@@ -302,13 +302,13 @@ export default function MobileShowroomPortfolio() {
               }`}
             >
               <div className="relative group cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <div className="absolute inset-0  rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 <Image
-                  src="iphone-16se.png?height=500&width=400"
+                  src="fold7-removebg-preview.png?height=600&width=600"
                   alt="Latest Smartphones"
-                  width={400}
-                  height={500}
-                  className="relative rounded-lg object-cover glass-card group-hover:scale-105 transition-transform duration-300"
+                  width={550}
+                  height={650}
+                  className="relative rounded-lg object-cover  group-hover:scale-105 transition-transform duration-300"
                   priority
                 />
                 <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-bounce cursor-pointer hover:scale-110 transition-transform">
@@ -417,20 +417,16 @@ export default function MobileShowroomPortfolio() {
       <section id="about" className="py-20 fade-in-section relative">
         <div className="mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <Badge
-                   variant="secondary"
-                    className="mb-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce"
-                  >
-                
-                  <Award className="w-3 h-3 mr-1" />
-                  Trusted Since 2009
-                </Badge>
-                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+            <div className="flex flex-col justify-center md:text-center sm:text-center space-y-4">
+              <div className="space-y-2 md:text-center">
+                <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce ">
+              <Award className="w-4 h-4 mr-2 " />
+              Complete Solutions
+            </Badge>
+                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-center mb-6 text-slate-800">
               <span className="gradient-text text-slate-600 font-sans">About YashMobile</span>
             </h2>
-                <p className="max-w-[600px] text-gray-700 hover:text-primary md:text-lg font-medium">
+                <p className="max-w-[600px] text-gray-700 hover:text-primary md:text-lg text-center font-medium">
                   With over {experienceYears} years of experience in the mobile
                   industry, YashMobile has become the trusted destination for
                   smartphone enthusiasts and everyday users alike. We pride
@@ -479,12 +475,12 @@ export default function MobileShowroomPortfolio() {
       </section>
 
       {/* Founder Section */}
-      <section className="fade-in-section bg-v ">
+      {/* <section className="fade-in-section bg-v ">
         <FounderSection />
-      </section>
+      </section> */}
 
-      {/* Company Zone Managers */}
-      <CompanySupportersDropdown />
+      {/* Company Zone Managers
+      <CompanySupportersDropdown /> */}
 
       {/* Other content */}
       {/* Testimonials Section */}
@@ -500,7 +496,7 @@ export default function MobileShowroomPortfolio() {
             variant="secondary"
             className="mb-4  glass-card animate-shimmer"
           ></Badge>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center text-gray-800">
+          <h2 className="gradient-text text-slate-600 font-sans text-4xl text-center font-bold tracking-tight sm:text-5xl  md:text-6xl mb-6 ">
             Customer Reviews
           </h2>
         </div>
@@ -515,7 +511,7 @@ export default function MobileShowroomPortfolio() {
         <div className="mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl">
           {/* Heading */}
           <div className="text-center mb-10 md:mb-12">
-            <Badge
+            {/* <Badge
               variant="secondary"
               className="mb-4 glass-card animate-shimmer w-fit mx-auto"
             >
@@ -524,6 +520,13 @@ export default function MobileShowroomPortfolio() {
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-800 mb-4">
               Visit Our Showroom
+            </h2> */}
+             <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 px-4 py-2 animate-gentle-bounce">
+              <MapPin className="w-4 h-4 mr-2" />
+               Visit Us Today
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-slate-800">
+              <span className="gradient-text text-slate-600 font-sans">Visit Our Showroom</span>
             </h2>
             <p className="text-gray-700 md:text-lg max-w-2xl mx-auto font-medium">
               Experience our products firsthand at our premium showroom. Our
@@ -534,7 +537,7 @@ export default function MobileShowroomPortfolio() {
           {/* Cards Grid */}
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
             {/* Contact Information Card */}
-            <Card className="glass-card glass-card-hover">
+            <Card className="bg-violet-300 border-violet-300 glass-card-hover hover:text-primary">
               <CardHeader>
                 <CardTitle className="flex items-center text-gray-800">
                   <Phone className="w-5 h-5 mr-2 text-primary" />
@@ -577,7 +580,7 @@ export default function MobileShowroomPortfolio() {
                       {item.icon}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800 group-hover:text-primary transition-colors">
+                      <p className="font-medium text-white group-hover:text-primary transition-colors">
                         {item.title}
                       </p>
                       <p className="text-sm text-gray-700">{item.content}</p>
@@ -588,7 +591,7 @@ export default function MobileShowroomPortfolio() {
             </Card>
 
             {/* Map Card */}
-            <Card className="glass-card glass-card-hover">
+            <Card className="bg-violet-300 border-violet-300 glass-card-hover">
               <CardHeader>
                 <CardTitle className="flex items-center text-gray-800">
                   <MapPin className="w-5 h-5 mr-2 text-primary" />
